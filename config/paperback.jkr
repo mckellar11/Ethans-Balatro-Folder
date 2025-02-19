@@ -1,0 +1,7 @@
+return {
+	["suits_enabled"] = true,
+	["paperclips_enabled"] = true,
+	["minor_arcana_enabled"] = true,
+	["enhancements_enabled"] = true,
+	["jokers_enabled"] = false,
+}

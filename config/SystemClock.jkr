@@ -1,0 +1,74 @@
+return {
+	["clockPresetIndex"] = 1,
+	["clockVisible"] = true,
+	["clockPresets"] = {
+		{
+			["format"] = 4,
+			["size"] = 0.6,
+			["colours"] = {
+				["back"] = "DYN_UI.MAIN",
+				["text"] = "WHITE",
+			},
+			["style"] = 5,
+			["position"] = {
+				["y"] = -0.65719,
+				["x"] = 0.44356,
+			},
+		},
+		{
+			["format"] = 1,
+			["size"] = 0.4,
+			["colours"] = {
+				["back"] = "GREEN",
+				["text"] = "WHITE",
+			},
+			["style"] = 2,
+			["position"] = {
+				["y"] = 11.55784,
+				["x"] = -0.45227,
+			},
+		},
+		{
+			["format"] = 6,
+			["size"] = 0.3,
+			["colours"] = {
+				["back"] = "DYN_UI.MAIN",
+				["text"] = "WHITE",
+			},
+			["style"] = 1,
+			["position"] = {
+				["y"] = 2.50993,
+				["x"] = 13.51127,
+			},
+		},
+		{
+			["format"] = 1,
+			["size"] = 0.5,
+			["colours"] = {
+				["back"] = "DYN_UI.MAIN",
+				["text"] = "WHITE",
+			},
+			["style"] = 3,
+			["position"] = {
+				["y"] = 7.88492,
+				["x"] = 17.52411,
+			},
+		},
+		{
+			["format"] = 2,
+			["size"] = 0.3,
+			["colours"] = {
+				["back"] = "DYN_UI.MAIN",
+				["text"] = "WHITE",
+			},
+			["style"] = 1,
+			["position"] = {
+				["y"] = 11.3936,
+				["x"] = 17.34843,
+			},
+		},
+	},
+	["clockAllowDrag"] = true,
+	["clockConfigVersion"] = 3,
+	["hourOffset"] = 0,
+}

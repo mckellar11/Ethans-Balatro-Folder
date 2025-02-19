@@ -1,0 +1,28 @@
+return {
+	["lock_keybind"] = "L",
+	["lock_default_keybind"] = "L",
+	["lock_keybind_enable"] = false,
+	["booster_pack_enabled"] = false,
+	["ltd"] = {
+		["local_state"] = {
+			["71526a72-ec25-4a33-aff7-9d95dbc75861"] = {
+				["area"] = "jokers",
+				["no_locked"] = true,
+				["id"] = "71526a72-ec25-4a33-aff7-9d95dbc75861",
+				["key"] = "c_base",
+				["force_lock"] = false,
+				["locked"] = false,
+				["button"] = {
+					["label"] = "LOCK",
+					["price"] = "$1",
+				},
+			},
+		},
+		["lock_list"] = {
+		},
+		["price_mult"] = 1,
+		["length"] = 0,
+		["forced_length"] = 0,
+		["price"] = 1,
+	},
+}

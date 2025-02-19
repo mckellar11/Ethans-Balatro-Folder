@@ -1,0 +1,4 @@
+return {
+	["Show Cast [Debug]"] = false,
+	["Show Directors"] = false,
+}

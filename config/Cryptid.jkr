@@ -1,0 +1,9 @@
+return {
+	["Cryptid"] = {
+		["big_music"] = true,
+		["alt_bg_music"] = false,
+		["exotic_music"] = true,
+		["jimball_music"] = true,
+		["code_music"] = true,
+	},
+}

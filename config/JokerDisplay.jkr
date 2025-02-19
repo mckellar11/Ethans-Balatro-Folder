@@ -1,0 +1,18 @@
+return {
+	["default_rows"] = {
+		["reminder"] = true,
+		["modifiers"] = true,
+		["extra"] = true,
+	},
+	["disable_perishable"] = false,
+	["hide_by_default"] = false,
+	["enabled"] = true,
+	["disable_rental"] = false,
+	["hide_empty"] = true,
+	["small_rows"] = {
+		["reminder"] = false,
+		["modifiers"] = true,
+		["extra"] = false,
+	},
+	["disable_collapse"] = false,
+}

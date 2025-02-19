@@ -1,0 +1,34 @@
+return {
+	["texture_configs"] = {
+		["texpack_cry_jolly_texture"] = {
+			["alt_tex_cry_jolly_jokers"] = true,
+		},
+		["texpack_marvel_universe"] = {
+			["alt_tex_marvel_spectral"] = true,
+			["alt_tex_marvel_boosters"] = true,
+			["alt_tex_marvel_planets"] = true,
+		},
+		["texpack_lep_planets_pack"] = {
+			["alt_tex_lep_planets_tex"] = true,
+			["alt_tex_lep_black_hole_tex"] = true,
+			["alt_tex_lep_celestial_tex"] = true,
+		},
+		["texpack_marvelsunstarot_pack"] = {
+			["alt_tex_marvelsunstarot_texture"] = true,
+		},
+		["texpack_cst_colored_tarot_normal"] = {
+			["alt_tex_cst_normal"] = true,
+		},
+		["texpack_cst_colored_tarot_hc"] = {
+			["alt_tex_cst_high_contrast"] = true,
+		},
+	},
+	["selected"] = {
+		"texpack_cry_jolly_texture",
+		"texpack_cst_colored_tarot_normal",
+		"default",
+		"texpack_marvelsunstarot_pack",
+		"texpack_cst_colored_tarot_hc",
+		"texpack_marvel_universe",
+	},
+}
