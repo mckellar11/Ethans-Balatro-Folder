@@ -1,0 +1,11 @@
+{
+    "id": "kino",
+    "name": "Balatro Goes Kino",
+    "author": ["IcyEthics"],
+    "description": "A mod that adds content to the game based on and inspired by cinema",
+    "prefix": "kino",
+    "main_file": "Kino.lua",
+    "badge_colour": "1b61ad",
+    "version": "0.1.001",
+    "dependencies": ["Steamodded (>=1.0.0~ALPHA-1414a)", "Lovely (>=0.6)"]
+}

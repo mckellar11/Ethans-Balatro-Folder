@@ -1,0 +1,159 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+## Add globals
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''function love.load()'''
+position = "before"
+payload = '''
+Kino = {}
+Kino.jokers = {}
+'''
+match_indent = true
+
+## Code from (Code adapted from AutumnMood (https://github.com/AutumnMood924/AutumnMoodMechanics/blob/main/amm.lua))
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif _c.set == 'Enhanced' then"
+position = "before"
+payload = '''if specific_vars.bonus_mult then
+	localize{type = 'other', key = 'card_extra_mult', nodes = desc_nodes, vars = {specific_vars.bonus_mult}}
+end
+if specific_vars.bonus_xmult then
+	localize{type = 'other', key = 'card_extra_xmult', nodes = desc_nodes, vars = {specific_vars.bonus_xmult}}
+end
+if specific_vars.bonus_hmult then
+	localize{type = 'other', key = 'card_extra_hmult', nodes = desc_nodes, vars = {specific_vars.bonus_hmult}}
+end
+if specific_vars.bonus_hxmult then
+	localize{type = 'other', key = 'card_extra_hxmult', nodes = desc_nodes, vars = {specific_vars.bonus_hxmult}}
+end'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "nominal_chips = self.base.nominal > 0 and self.base.nominal or nil,"
+position = "after"
+payload = '''bonus_mult = (self.ability.perma_mult or 0) > 0 and (self.ability.perma_mult or 0) or nil,
+bonus_xmult = (self.ability.perma_xmult or 0) > 1 and (self.ability.perma_xmult or 0) or nil,
+bonus_hmult = (self.ability.perma_hmult or 0) > 0 and (self.ability.perma_hmult or 0) or nil,
+bonus_hxmult = (self.ability.perma_hxmult or 0) > 1 and (self.ability.perma_hxmult or 0) or nil,'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "perma_bonus = self.ability and self.ability.perma_bonus or 0,"
+position = "after"
+payload = '''perma_mult = self.ability and self.ability.perma_mult or 0,
+perma_xmult = self.ability and self.ability.perma_xmult or 1,
+perma_hmult = self.ability and self.ability.perma_hmult or 0,
+perma_hxmult = self.ability and self.ability.perma_hxmult or 1,'''
+match_indent = true
+overwrite = false
+
+###
+
+# Additional Splash functionality
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if next(find_joker('Splash')) then"
+position = "after"
+payload = '''
+for j=1, #scoring_hand do
+	if scoring_hand[j] == G.play.cards[i] then
+		splash_bonus = false
+	end
+end
+if splash_bonus then
+	print(G.play.cards[i]:get_id() .. "Has Splash Bonus")
+	G.play.cards[i].splash_bonus = true
+	scoring_hand[#scoring_hand + 1] = G.play.cards[i]
+	print(G.play.cards[i].base.name .. " will be set at position " .. #scoring_hand + 1)
+end
+
+print("#############")'''
+match_indent = true
+overwrite = false
+
+### The Thing Functionality
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if flush_calc then"
+position = "after"
+payload = '''
+if next(find_joker('j_kino_the_thing')) and (self.base.suit == G.GAME.current_round.kino_thing_card.suit) then
+	return true
+end
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.debuff and not bypass_debuff then return end"
+position = "after"
+payload = '''
+if next(find_joker('j_kino_the_thing')) and (self.base.suit == G.GAME.current_round.kino_thing_card.suit) then
+	return true
+end
+'''
+match_indent = true
+overwrite = false
+
+
+# Demonic Card patches
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local cards_destroyed = {}"
+position = "after"
+payload = '''
+local has_demonic_card = false
+
+for i = 1, #scoring_hand do
+	if SMODS.has_enhancement(scoring_hand[i], 'm_kino_demonic') and not scoring_hand[i].debuff then
+		has_demonic_card = true
+	end
+end
+
+for i = 1, #scoring_hand do
+	if has_demonic_card and not SMODS.has_enhancement(scoring_hand[i], 'm_kino_demonic') then
+		cards_destroyed[#cards_destroyed + 1] = scoring_hand[i]
+		G.GAME.current_round.sacrifices_made = G.GAME.current_round.sacrifices_made + 1
+		scoring_hand[i].destroyed = true
+	end
+end
+
+
+'''
+match_indent = true
+overwrite = false
+
+## Consumable Type code (Taken from Bunco)
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''local shared_sprite = (self.ability.set == 'Edition' or self.ability.set == 'Joker') and G.shared_undiscovered_joker or G.shared_undiscovered_tarot'''
+position = 'after'
+match_indent = true
+payload = '''
+
+if not G.shared_undiscovered_confection then G.shared_undiscovered_confection = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS['kino_confections'], {x = 1, y = 3}) end
+
+if self.ability.set == 'confection' then
+    shared_sprite = G.shared_undiscovered_confection
+end
+
+'''
